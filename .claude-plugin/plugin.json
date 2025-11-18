@@ -1,0 +1,62 @@
+{
+  "name": "developer-roadmap-plugin",
+  "version": "1.0.0",
+  "description": "Comprehensive learning plugin for 70+ developer roadmaps with 7 specialized agents",
+  "author": "Claude Code Plugin Marketplace",
+  "license": "MIT",
+  "keywords": [
+    "learning",
+    "roadmap",
+    "developer-roadmap",
+    "frontend",
+    "backend",
+    "devops",
+    "data-science",
+    "system-design",
+    "career-development"
+  ],
+  "repository": "https://github.com/pluginagentmarketplace/developer-roadmap-plugin",
+  "agents": [
+    "01-frontend-development",
+    "02-backend-development",
+    "03-devops-cloud",
+    "04-programming-languages",
+    "05-data-ai",
+    "06-specialized-roles",
+    "07-foundations-architecture"
+  ],
+  "commands": [
+    "learn",
+    "browse-roadmap",
+    "assess-knowledge",
+    "explore-roles"
+  ],
+  "skills": [
+    "frontend",
+    "backend",
+    "devops",
+    "languages",
+    "data-ai",
+    "specialized",
+    "foundations"
+  ],
+  "hooks": {
+    "config": "hooks/hooks.json"
+  },
+  "marketplaceMetadata": {
+    "category": "Learning & Development",
+    "tier": "professional",
+    "supportedRoles": [
+      "frontend-developer",
+      "backend-developer",
+      "devops-engineer",
+      "data-engineer",
+      "qa-engineer",
+      "technical-writer",
+      "software-architect"
+    ],
+    "totalRoadmaps": 70,
+    "totalHours": 2000,
+    "difficulty": "beginner-to-advanced"
+  }
+}

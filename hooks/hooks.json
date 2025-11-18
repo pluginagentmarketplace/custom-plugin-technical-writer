@@ -1,0 +1,187 @@
+{
+  "hooks": [
+    {
+      "name": "learning-progress-tracker",
+      "description": "Automatically tracks learning progress when users complete commands or access roadmaps",
+      "triggers": [
+        "command-executed",
+        "agent-invoked",
+        "skill-loaded"
+      ],
+      "actions": [
+        "log-interaction",
+        "update-progress",
+        "suggest-next-steps"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "prerequisite-validator",
+      "description": "Validates that learners have necessary prerequisites before advancing to advanced topics",
+      "triggers": [
+        "skill-loaded",
+        "agent-invoked"
+      ],
+      "actions": [
+        "check-prerequisites",
+        "warn-if-unprepared",
+        "suggest-foundational-learning"
+      ],
+      "enabled": true,
+      "configuration": {
+        "enforce": false,
+        "warn_only": true,
+        "suggest_alternatives": true
+      }
+    },
+    {
+      "name": "resource-recommendation",
+      "description": "Provides personalized resource recommendations based on learning history",
+      "triggers": [
+        "command-executed",
+        "assessment-completed"
+      ],
+      "actions": [
+        "analyze-learning-style",
+        "recommend-resources",
+        "suggest-projects"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "project-suggestion-engine",
+      "description": "Suggests hands-on projects based on current learning topic",
+      "triggers": [
+        "skill-loaded",
+        "agent-invoked",
+        "assessment-completed"
+      ],
+      "actions": [
+        "identify-topic",
+        "match-project-difficulty",
+        "provide-project-ideas"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "community-engagement",
+      "description": "Encourages community participation and collaboration",
+      "triggers": [
+        "assessment-completed",
+        "milestone-reached"
+      ],
+      "actions": [
+        "suggest-discussion-topics",
+        "recommend-open-source",
+        "highlight-community-members"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "learning-milestone-tracker",
+      "description": "Celebrates learning achievements and milestones",
+      "triggers": [
+        "assessment-score-improvement",
+        "project-completed",
+        "roadmap-completed"
+      ],
+      "actions": [
+        "acknowledge-achievement",
+        "suggest-next-milestone",
+        "provide-certificate-path"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "content-freshness-checker",
+      "description": "Keeps learning content up-to-date with latest technologies",
+      "triggers": [
+        "daily-schedule"
+      ],
+      "actions": [
+        "check-content-versions",
+        "notify-of-updates",
+        "suggest-refresher-learning"
+      ],
+      "enabled": true,
+      "schedule": "daily"
+    },
+    {
+      "name": "career-path-advisor",
+      "description": "Provides career guidance based on learning progress and role interest",
+      "triggers": [
+        "assessment-completed",
+        "role-exploration",
+        "multiple-skills-learned"
+      ],
+      "actions": [
+        "analyze-skill-set",
+        "suggest-career-paths",
+        "recommend-specialization",
+        "provide-salary-insights"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "peer-learning-connector",
+      "description": "Connects learners with similar interests for peer learning",
+      "triggers": [
+        "role-interest-selected",
+        "learning-goal-defined"
+      ],
+      "actions": [
+        "identify-peers",
+        "suggest-study-groups",
+        "facilitate-pair-programming"
+      ],
+      "enabled": true,
+      "community_integration": true
+    },
+    {
+      "name": "adaptive-learning-path",
+      "description": "Adjusts learning recommendations based on learning pace and style",
+      "triggers": [
+        "assessment-completed",
+        "skill-practiced",
+        "time-spent-tracked"
+      ],
+      "actions": [
+        "analyze-learning-style",
+        "adjust-difficulty",
+        "personalize-recommendations"
+      ],
+      "enabled": true,
+      "configuration": {
+        "track_learning_pace": true,
+        "adjust_dynamically": true,
+        "consider_learning_style": true
+      }
+    }
+  ],
+  "global_settings": {
+    "enable_notifications": true,
+    "enable_progress_tracking": true,
+    "enable_personalization": true,
+    "data_retention_days": 365,
+    "privacy_level": "user_controlled",
+    "community_features": true,
+    "gamification": {
+      "enabled": true,
+      "achievements": true,
+      "leaderboards": false,
+      "badges": true
+    }
+  },
+  "notification_preferences": {
+    "learning_milestones": true,
+    "new_content": true,
+    "community_updates": true,
+    "assessment_results": true,
+    "career_opportunities": true,
+    "peer_recommendations": true,
+    "frequency": "daily_digest"
+  },
+  "version": "1.0.0",
+  "last_updated": "2024-11-18",
+  "maintainer": "Claude Code Plugin Marketplace"
+}
