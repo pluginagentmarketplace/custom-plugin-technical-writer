@@ -1,187 +1,190 @@
 {
   "hooks": [
     {
-      "name": "learning-progress-tracker",
-      "description": "Automatically tracks learning progress when users complete commands or access roadmaps",
+      "name": "documentation-quality-monitor",
+      "description": "Monitors documentation quality and flags common issues",
       "triggers": [
         "command-executed",
-        "agent-invoked",
-        "skill-loaded"
+        "content-created"
       ],
       "actions": [
-        "log-interaction",
-        "update-progress",
-        "suggest-next-steps"
+        "check-clarity",
+        "verify-examples",
+        "flag-issues"
       ],
       "enabled": true
     },
     {
-      "name": "prerequisite-validator",
-      "description": "Validates that learners have necessary prerequisites before advancing to advanced topics",
+      "name": "auto-template-suggester",
+      "description": "Suggests appropriate templates based on documentation type",
       "triggers": [
-        "skill-loaded",
-        "agent-invoked"
+        "write-docs-invoked",
+        "content-analysis"
       ],
       "actions": [
-        "check-prerequisites",
-        "warn-if-unprepared",
-        "suggest-foundational-learning"
-      ],
-      "enabled": true,
-      "configuration": {
-        "enforce": false,
-        "warn_only": true,
-        "suggest_alternatives": true
-      }
-    },
-    {
-      "name": "resource-recommendation",
-      "description": "Provides personalized resource recommendations based on learning history",
-      "triggers": [
-        "command-executed",
-        "assessment-completed"
-      ],
-      "actions": [
-        "analyze-learning-style",
-        "recommend-resources",
-        "suggest-projects"
+        "identify-doc-type",
+        "recommend-template",
+        "provide-structure"
       ],
       "enabled": true
     },
     {
-      "name": "project-suggestion-engine",
-      "description": "Suggests hands-on projects based on current learning topic",
+      "name": "code-example-validator",
+      "description": "Validates code examples for syntax and best practices",
       "triggers": [
-        "skill-loaded",
-        "agent-invoked",
-        "assessment-completed"
+        "code-generated",
+        "example-created"
       ],
       "actions": [
-        "identify-topic",
-        "match-project-difficulty",
-        "provide-project-ideas"
+        "syntax-check",
+        "best-practices-check",
+        "error-handling-verify"
       ],
       "enabled": true
     },
     {
-      "name": "community-engagement",
-      "description": "Encourages community participation and collaboration",
+      "name": "link-and-reference-checker",
+      "description": "Ensures all links and references are valid and current",
       "triggers": [
-        "assessment-completed",
-        "milestone-reached"
-      ],
-      "actions": [
-        "suggest-discussion-topics",
-        "recommend-open-source",
-        "highlight-community-members"
-      ],
-      "enabled": true
-    },
-    {
-      "name": "learning-milestone-tracker",
-      "description": "Celebrates learning achievements and milestones",
-      "triggers": [
-        "assessment-score-improvement",
-        "project-completed",
-        "roadmap-completed"
-      ],
-      "actions": [
-        "acknowledge-achievement",
-        "suggest-next-milestone",
-        "provide-certificate-path"
-      ],
-      "enabled": true
-    },
-    {
-      "name": "content-freshness-checker",
-      "description": "Keeps learning content up-to-date with latest technologies",
-      "triggers": [
+        "content-published",
         "daily-schedule"
       ],
       "actions": [
-        "check-content-versions",
-        "notify-of-updates",
-        "suggest-refresher-learning"
+        "check-links",
+        "verify-references",
+        "flag-broken-links"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "terminology-consistency",
+      "description": "Ensures consistent terminology throughout documentation",
+      "triggers": [
+        "content-created",
+        "review-triggered"
+      ],
+      "actions": [
+        "build-term-index",
+        "check-consistency",
+        "suggest-standardization"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "accessibility-compliance-checker",
+      "description": "Checks documentation for accessibility compliance (WCAG)",
+      "triggers": [
+        "content-published",
+        "review-triggered"
+      ],
+      "actions": [
+        "check-heading-hierarchy",
+        "verify-alt-text",
+        "check-color-contrast",
+        "verify-keyboard-nav"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "seo-optimization-suggester",
+      "description": "Provides SEO optimization suggestions for better visibility",
+      "triggers": [
+        "content-created",
+        "publishing-requested"
+      ],
+      "actions": [
+        "analyze-keywords",
+        "suggest-headings",
+        "optimize-metadata",
+        "check-readability"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "content-freshness-tracker",
+      "description": "Tracks documentation age and suggests updates",
+      "triggers": [
+        "daily-schedule",
+        "version-updated"
+      ],
+      "actions": [
+        "flag-stale-content",
+        "check-deprecated-features",
+        "suggest-updates"
       ],
       "enabled": true,
       "schedule": "daily"
     },
     {
-      "name": "career-path-advisor",
-      "description": "Provides career guidance based on learning progress and role interest",
+      "name": "audience-alignment-checker",
+      "description": "Ensures documentation matches target audience level",
       "triggers": [
-        "assessment-completed",
-        "role-exploration",
-        "multiple-skills-learned"
+        "review-triggered",
+        "content-created"
       ],
       "actions": [
-        "analyze-skill-set",
-        "suggest-career-paths",
-        "recommend-specialization",
-        "provide-salary-insights"
+        "analyze-reading-level",
+        "check-jargon",
+        "suggest-examples"
       ],
       "enabled": true
     },
     {
-      "name": "peer-learning-connector",
-      "description": "Connects learners with similar interests for peer learning",
+      "name": "documentation-version-control",
+      "description": "Tracks documentation versions and changes",
       "triggers": [
-        "role-interest-selected",
-        "learning-goal-defined"
+        "content-published",
+        "major-change"
       ],
       "actions": [
-        "identify-peers",
-        "suggest-study-groups",
-        "facilitate-pair-programming"
+        "version-tracking",
+        "changelog-generation",
+        "backup-creation"
       ],
-      "enabled": true,
-      "community_integration": true
-    },
-    {
-      "name": "adaptive-learning-path",
-      "description": "Adjusts learning recommendations based on learning pace and style",
-      "triggers": [
-        "assessment-completed",
-        "skill-practiced",
-        "time-spent-tracked"
-      ],
-      "actions": [
-        "analyze-learning-style",
-        "adjust-difficulty",
-        "personalize-recommendations"
-      ],
-      "enabled": true,
-      "configuration": {
-        "track_learning_pace": true,
-        "adjust_dynamically": true,
-        "consider_learning_style": true
-      }
+      "enabled": true
     }
   ],
   "global_settings": {
     "enable_notifications": true,
-    "enable_progress_tracking": true,
-    "enable_personalization": true,
-    "data_retention_days": 365,
+    "enable_quality_checks": true,
+    "enable_seo_suggestions": true,
+    "data_retention_days": 90,
     "privacy_level": "user_controlled",
-    "community_features": true,
-    "gamification": {
-      "enabled": true,
-      "achievements": true,
-      "leaderboards": false,
-      "badges": true
+    "auto_backup": true,
+    "version_tracking": true,
+    "quality_thresholds": {
+      "min_clarity_score": 80,
+      "min_completeness": 85,
+      "required_examples": true,
+      "required_error_handling": true
     }
   },
   "notification_preferences": {
-    "learning_milestones": true,
-    "new_content": true,
-    "community_updates": true,
-    "assessment_results": true,
-    "career_opportunities": true,
-    "peer_recommendations": true,
-    "frequency": "daily_digest"
+    "quality_issues": true,
+    "broken_links": true,
+    "stale_content": true,
+    "seo_suggestions": true,
+    "accessibility_issues": true,
+    "terminology_inconsistencies": true,
+    "frequency": "immediate_for_critical",
+    "digest_frequency": "daily"
+  },
+  "documentation_standards": {
+    "required_sections": [
+      "overview",
+      "prerequisites",
+      "getting-started",
+      "examples",
+      "troubleshooting"
+    ],
+    "recommended_example_count": 3,
+    "min_heading_hierarchy": true,
+    "require_alt_text": true,
+    "code_example_requirement": "mandatory",
+    "error_handling_required": true,
+    "accessibility_wcag_level": "AA"
   },
   "version": "1.0.0",
   "last_updated": "2024-11-18",
-  "maintainer": "Claude Code Plugin Marketplace"
+  "maintainer": "Technical Writer Plugin Team"
 }

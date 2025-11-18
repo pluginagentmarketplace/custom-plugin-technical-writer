@@ -1,62 +1,62 @@
 {
-  "name": "developer-roadmap-plugin",
+  "name": "custom-plugin-technical-writer",
   "version": "1.0.0",
-  "description": "Comprehensive learning plugin for 70+ developer roadmaps with 7 specialized agents",
+  "description": "Professional Technical Writer plugin with AI-powered documentation assistance, API documentation templates, and content optimization tools",
   "author": "Claude Code Plugin Marketplace",
   "license": "MIT",
   "keywords": [
-    "learning",
-    "roadmap",
-    "developer-roadmap",
-    "frontend",
-    "backend",
-    "devops",
-    "data-science",
-    "system-design",
-    "career-development"
+    "technical-writing",
+    "documentation",
+    "api-docs",
+    "guides",
+    "tutorials",
+    "content-creation",
+    "markdown",
+    "swagger",
+    "openapi"
   ],
-  "repository": "https://github.com/pluginagentmarketplace/developer-roadmap-plugin",
+  "repository": "https://github.com/pluginagentmarketplace/custom-plugin-technical-writer",
   "agents": [
-    "01-frontend-development",
-    "02-backend-development",
-    "03-devops-cloud",
-    "04-programming-languages",
-    "05-data-ai",
-    "06-specialized-roles",
-    "07-foundations-architecture"
+    "technical-writer-specialist"
   ],
   "commands": [
-    "learn",
-    "browse-roadmap",
-    "assess-knowledge",
-    "explore-roles"
+    "write-docs",
+    "api-template",
+    "review-docs",
+    "generate-examples"
   ],
   "skills": [
-    "frontend",
-    "backend",
-    "devops",
-    "languages",
-    "data-ai",
-    "specialized",
-    "foundations"
+    "api-documentation",
+    "user-guides",
+    "code-examples"
   ],
   "hooks": {
     "config": "hooks/hooks.json"
   },
   "marketplaceMetadata": {
-    "category": "Learning & Development",
+    "category": "Documentation & Content",
     "tier": "professional",
     "supportedRoles": [
-      "frontend-developer",
-      "backend-developer",
-      "devops-engineer",
-      "data-engineer",
-      "qa-engineer",
       "technical-writer",
-      "software-architect"
+      "documentation-engineer",
+      "developer-advocate",
+      "content-creator"
     ],
-    "totalRoadmaps": 70,
-    "totalHours": 2000,
+    "documentationTypes": [
+      "API Documentation",
+      "User Guides",
+      "Tutorials",
+      "Code Examples",
+      "Release Notes",
+      "Architecture Guides"
+    ],
+    "toolsSupported": [
+      "Markdown",
+      "OpenAPI/Swagger",
+      "AsyncAPI",
+      "ReStructuredText",
+      "HTML/CSS"
+    ],
     "difficulty": "beginner-to-advanced"
   }
 }
