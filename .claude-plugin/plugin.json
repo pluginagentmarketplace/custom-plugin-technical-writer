@@ -1,0 +1,62 @@
+{
+  "name": "custom-plugin-technical-writer",
+  "version": "1.0.0",
+  "description": "Professional Technical Writer plugin with AI-powered documentation assistance, API documentation templates, and content optimization tools",
+  "author": "Claude Code Plugin Marketplace",
+  "license": "MIT",
+  "keywords": [
+    "technical-writing",
+    "documentation",
+    "api-docs",
+    "guides",
+    "tutorials",
+    "content-creation",
+    "markdown",
+    "swagger",
+    "openapi"
+  ],
+  "repository": "https://github.com/pluginagentmarketplace/custom-plugin-technical-writer",
+  "agents": [
+    "technical-writer-specialist"
+  ],
+  "commands": [
+    "write-docs",
+    "api-template",
+    "review-docs",
+    "generate-examples"
+  ],
+  "skills": [
+    "api-documentation",
+    "user-guides",
+    "code-examples"
+  ],
+  "hooks": {
+    "config": "hooks/hooks.json"
+  },
+  "marketplaceMetadata": {
+    "category": "Documentation & Content",
+    "tier": "professional",
+    "supportedRoles": [
+      "technical-writer",
+      "documentation-engineer",
+      "developer-advocate",
+      "content-creator"
+    ],
+    "documentationTypes": [
+      "API Documentation",
+      "User Guides",
+      "Tutorials",
+      "Code Examples",
+      "Release Notes",
+      "Architecture Guides"
+    ],
+    "toolsSupported": [
+      "Markdown",
+      "OpenAPI/Swagger",
+      "AsyncAPI",
+      "ReStructuredText",
+      "HTML/CSS"
+    ],
+    "difficulty": "beginner-to-advanced"
+  }
+}

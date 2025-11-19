@@ -1,0 +1,190 @@
+{
+  "hooks": [
+    {
+      "name": "documentation-quality-monitor",
+      "description": "Monitors documentation quality and flags common issues",
+      "triggers": [
+        "command-executed",
+        "content-created"
+      ],
+      "actions": [
+        "check-clarity",
+        "verify-examples",
+        "flag-issues"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "auto-template-suggester",
+      "description": "Suggests appropriate templates based on documentation type",
+      "triggers": [
+        "write-docs-invoked",
+        "content-analysis"
+      ],
+      "actions": [
+        "identify-doc-type",
+        "recommend-template",
+        "provide-structure"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "code-example-validator",
+      "description": "Validates code examples for syntax and best practices",
+      "triggers": [
+        "code-generated",
+        "example-created"
+      ],
+      "actions": [
+        "syntax-check",
+        "best-practices-check",
+        "error-handling-verify"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "link-and-reference-checker",
+      "description": "Ensures all links and references are valid and current",
+      "triggers": [
+        "content-published",
+        "daily-schedule"
+      ],
+      "actions": [
+        "check-links",
+        "verify-references",
+        "flag-broken-links"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "terminology-consistency",
+      "description": "Ensures consistent terminology throughout documentation",
+      "triggers": [
+        "content-created",
+        "review-triggered"
+      ],
+      "actions": [
+        "build-term-index",
+        "check-consistency",
+        "suggest-standardization"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "accessibility-compliance-checker",
+      "description": "Checks documentation for accessibility compliance (WCAG)",
+      "triggers": [
+        "content-published",
+        "review-triggered"
+      ],
+      "actions": [
+        "check-heading-hierarchy",
+        "verify-alt-text",
+        "check-color-contrast",
+        "verify-keyboard-nav"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "seo-optimization-suggester",
+      "description": "Provides SEO optimization suggestions for better visibility",
+      "triggers": [
+        "content-created",
+        "publishing-requested"
+      ],
+      "actions": [
+        "analyze-keywords",
+        "suggest-headings",
+        "optimize-metadata",
+        "check-readability"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "content-freshness-tracker",
+      "description": "Tracks documentation age and suggests updates",
+      "triggers": [
+        "daily-schedule",
+        "version-updated"
+      ],
+      "actions": [
+        "flag-stale-content",
+        "check-deprecated-features",
+        "suggest-updates"
+      ],
+      "enabled": true,
+      "schedule": "daily"
+    },
+    {
+      "name": "audience-alignment-checker",
+      "description": "Ensures documentation matches target audience level",
+      "triggers": [
+        "review-triggered",
+        "content-created"
+      ],
+      "actions": [
+        "analyze-reading-level",
+        "check-jargon",
+        "suggest-examples"
+      ],
+      "enabled": true
+    },
+    {
+      "name": "documentation-version-control",
+      "description": "Tracks documentation versions and changes",
+      "triggers": [
+        "content-published",
+        "major-change"
+      ],
+      "actions": [
+        "version-tracking",
+        "changelog-generation",
+        "backup-creation"
+      ],
+      "enabled": true
+    }
+  ],
+  "global_settings": {
+    "enable_notifications": true,
+    "enable_quality_checks": true,
+    "enable_seo_suggestions": true,
+    "data_retention_days": 90,
+    "privacy_level": "user_controlled",
+    "auto_backup": true,
+    "version_tracking": true,
+    "quality_thresholds": {
+      "min_clarity_score": 80,
+      "min_completeness": 85,
+      "required_examples": true,
+      "required_error_handling": true
+    }
+  },
+  "notification_preferences": {
+    "quality_issues": true,
+    "broken_links": true,
+    "stale_content": true,
+    "seo_suggestions": true,
+    "accessibility_issues": true,
+    "terminology_inconsistencies": true,
+    "frequency": "immediate_for_critical",
+    "digest_frequency": "daily"
+  },
+  "documentation_standards": {
+    "required_sections": [
+      "overview",
+      "prerequisites",
+      "getting-started",
+      "examples",
+      "troubleshooting"
+    ],
+    "recommended_example_count": 3,
+    "min_heading_hierarchy": true,
+    "require_alt_text": true,
+    "code_example_requirement": "mandatory",
+    "error_handling_required": true,
+    "accessibility_wcag_level": "AA"
+  },
+  "version": "1.0.0",
+  "last_updated": "2024-11-18",
+  "maintainer": "Technical Writer Plugin Team"
+}
