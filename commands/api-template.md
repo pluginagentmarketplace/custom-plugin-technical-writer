@@ -1,3 +1,9 @@
+---
+name: api-template
+description: template - OpenAPI/Swagger Template Generator
+allowed-tools: Read
+---
+
 # /api-template - OpenAPI/Swagger Template Generator
 
 ## Purpose

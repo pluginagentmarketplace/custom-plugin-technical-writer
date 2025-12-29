@@ -1,3 +1,9 @@
+---
+name: generate-examples
+description: examples - Code Example Generator
+allowed-tools: Read
+---
+
 # /generate-examples - Code Example Generator
 
 ## Purpose

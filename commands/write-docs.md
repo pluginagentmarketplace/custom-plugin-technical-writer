@@ -1,3 +1,9 @@
+---
+name: write-docs
+description: docs - Documentation Project Assistant
+allowed-tools: Read
+---
+
 # /write-docs - Documentation Project Assistant
 
 ## Purpose

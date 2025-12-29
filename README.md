@@ -1,307 +1,247 @@
-# Custom Plugin Technical Writer
+<div align="center">
 
-Professional AI-powered technical writer plugin for Claude Code. Create exceptional documentation, API specifications, user guides, and code examples with intelligent assistance.
+<!-- Animated Typing Banner -->
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=2E9EF7&center=true&vCenter=true&multiline=true&repeat=true&width=600&height=100&lines=Technical+Writer+Assistant;1+Agents+%7C+3+Skills;Claude+Code+Plugin" alt="Technical Writer Assistant" />
 
-## ✨ Core Features
+<br/>
 
-### 🎯 **1 Specialized Agent**
-**Technical Writer Specialist** - Expert guidance for creating professional technical documentation
+<!-- Badge Row 1: Status Badges -->
+[![Version](https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge)](https://github.com/pluginagentmarketplace/custom-plugin-technical-writer/releases)
+[![License](https://img.shields.io/badge/License-Custom-yellow?style=for-the-badge)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Production-brightgreen?style=for-the-badge)](#)
+[![SASMP](https://img.shields.io/badge/SASMP-v1.3.0-blueviolet?style=for-the-badge)](#)
 
-### 🛠️ **3 Invokable Skills**
-1. **API Documentation** - OpenAPI/Swagger specs, endpoint docs, authentication guides
-2. **User Guides** - Tutorials, feature explanations, troubleshooting, FAQ
-3. **Code Examples** - Working samples, implementation patterns, multi-language support
+<!-- Badge Row 2: Content Badges -->
+[![Agents](https://img.shields.io/badge/Agents-1-orange?style=flat-square&logo=robot)](#-agents)
+[![Skills](https://img.shields.io/badge/Skills-3-purple?style=flat-square&logo=lightning)](#-skills)
+[![Commands](https://img.shields.io/badge/Commands-4-green?style=flat-square&logo=terminal)](#-commands)
 
-### 📚 **4 Powerful Slash Commands**
-- `/write-docs` - Start documentation projects with guided structure
-- `/api-template` - Generate OpenAPI/Swagger templates
-- `/review-docs` - Get comprehensive feedback and improvements
-- `/generate-examples` - Create working code samples in multiple languages
+<br/>
 
-### 🔧 **10 Smart Automation Hooks**
-- Documentation quality monitoring
-- Auto-template suggestions
-- Code example validation
-- Link and reference checking
-- Terminology consistency
-- Accessibility compliance (WCAG)
-- SEO optimization suggestions
-- Content freshness tracking
-- Audience alignment checking
-- Version control automation
-
-## 📊 Plugin Capabilities
-
-| Feature | Value |
-|---------|-------|
-| Agent | 1 (Technical Writer Specialist) |
-| Skills | 3 (API, Guides, Examples) |
-| Commands | 4 (/write-docs, /api-template, /review-docs, /generate-examples) |
-| Automation Hooks | 10 (Quality, validation, optimization) |
-| Supported Documentation Types | 6+ (API, User Guide, Developer Guide, Getting Started, Reference, Release Notes) |
-| Code Example Languages | 7+ (JavaScript, Python, Java, Go, Rust, C#, PHP) |
-| Documentation Tools | OpenAPI, AsyncAPI, Markdown, ReStructuredText, HTML |
-
-## 📦 Plugin Structure
-
-```
-custom-plugin-technical-writer/
-├── .claude-plugin/
-│   └── plugin.json                    # Plugin manifest
-├── agents/
-│   └── technical-writer-specialist.md # Main agent
-├── skills/
-│   ├── api-docs/SKILL.md             # API documentation
-│   ├── guides/SKILL.md               # User guides & tutorials
-│   └── examples/SKILL.md             # Code examples
-├── commands/
-│   ├── write-docs.md                 # Start documentation projects
-│   ├── api-template.md               # Generate API templates
-│   ├── review-docs.md                # Get documentation feedback
-│   └── generate-examples.md          # Create code examples
-├── hooks/
-│   └── hooks.json                    # 10 automation hooks
-└── README.md                         # This file
-```
-
-## 🚀 Quick Start
-
-### Installation
-```bash
-# Load plugin from directory
-./custom-plugin-technical-writer
-```
-
-### First Commands
-```
-/write-docs         # Start a new documentation project
-/api-template       # Get API documentation templates
-/review-docs        # Get feedback on your documentation
-/generate-examples  # Create working code examples
-```
-
-## 📝 Documentation Types Supported
-
-### 1. **API Documentation**
-- REST API specifications
-- OpenAPI/Swagger templates
-- Authentication guides
-- Error handling documentation
-- Rate limiting docs
-- Code examples in multiple languages
-
-### 2. **User Guides**
-- Getting started guides
-- Feature tutorials
-- Step-by-step instructions
-- Troubleshooting sections
-- FAQ documentation
-
-### 3. **Developer Guides**
-- Architecture documentation
-- Setup instructions
-- Code structure guides
-- Extension/customization guides
-
-### 4. **Getting Started**
-- Quick setup (5-10 minutes)
-- First task examples
-- Quick reference cards
-
-### 5. **Technical Reference**
-- Configuration documentation
-- Parameter references
-- Command-line options
-- API references
-
-### 6. **Release Notes**
-- Version updates
-- Change documentation
-- Migration guides
-- Breaking changes
-
-## 🌟 Key Highlights
-
-✅ **Specialized** - Focused solely on technical writing excellence
-✅ **Professional** - Production-ready quality
-✅ **Intelligent** - AI-powered suggestions and validation
-✅ **Multi-language** - Code examples in 7+ languages
-✅ **Comprehensive** - Covers all documentation types
-✅ **Automated** - Quality checks and optimizations
-✅ **Accessible** - WCAG compliance built-in
-✅ **SEO-Ready** - Optimization suggestions included
-
-## 📈 Documentation Outcomes
-
-With this plugin, you'll create:
-- ✅ Clear, professional documentation
-- ✅ Complete API specifications
-- ✅ Engaging user guides
-- ✅ Working code examples
-- ✅ Accessible content
-- ✅ SEO-optimized documentation
-- ✅ Consistent terminology
-- ✅ Properly structured content
-
-## 🔒 Quality Standards
-
-All documentation produced meets:
-- **Clarity** - Simple, direct language
-- **Completeness** - All necessary information
-- **Accuracy** - Verified technical correctness
-- **Structure** - Logical organization
-- **Accessibility** - WCAG 2.1 AA compliance
-- **Consistency** - Uniform terminology and style
-- **SEO** - Search engine optimized
-
-## 💡 Use Cases
-
-### Use Case 1: API Documentation
-```
-1. Run /write-docs → Choose API Documentation
-2. Provide API overview → Get OpenAPI template
-3. Fill in endpoints → Use /api-template
-4. Add examples → Use /generate-examples
-5. Review → Use /review-docs
-```
-
-### Use Case 2: User Guide
-```
-1. Run /write-docs → Choose User Guide
-2. Describe features → Get guide structure
-3. Write content → Follow template
-4. Get feedback → Use /review-docs
-```
-
-### Use Case 3: Code Examples
-```
-1. Run /generate-examples
-2. Describe what to show
-3. Select languages
-4. Get working samples
-```
-
-### Use Case 4: Documentation Review
-```
-1. Run /review-docs
-2. Paste your documentation
-3. Choose review type
-4. Get detailed feedback
-```
-
-## 🎯 Workflow
-
-### The Documentation Journey
-
-```
-Start (/write-docs)
-    ↓
-Choose Type
-    ↓
-Get Structure & Template
-    ↓
-Write Content
-    ↓
-Add Examples (/generate-examples)
-    ↓
-Get Feedback (/review-docs)
-    ↓
-Improve & Refine
-    ↓
-Publish
-```
-
-## 📊 Statistics
-
-- **Documentation Types**: 6+
-- **Code Languages**: 7+
-- **Supported Formats**: OpenAPI, AsyncAPI, Markdown, ReStructuredText, HTML
-- **Automation Hooks**: 10
-- **Quality Checks**: 8+
-- **Code Example Patterns**: 5+
-
-## 🎓 Best Practices Included
-
-✅ **Writing Standards**
-- Active voice over passive
-- Simple, clear language
-- Consistent terminology
-- Helpful examples
-
-✅ **Technical Accuracy**
-- Code examples that work
-- Current version documentation
-- Error handling included
-- Best practices demonstrated
-
-✅ **Documentation Structure**
-- Clear heading hierarchy
-- Logical flow
-- Easy navigation
-- Consistent formatting
-
-✅ **Accessibility**
-- WCAG 2.1 AA compliance
-- Alt text for images
-- Keyboard navigation
-- Color contrast compliance
-
-✅ **Performance**
-- Fast-loading documentation
-- Mobile-responsive
-- SEO-optimized
-- Properly cached
-
-## 🛠️ Tools & Integrations
-
-### Supported Documentation Tools
-- Markdown editors
-- OpenAPI/Swagger
-- AsyncAPI
-- ReStructuredText
-- Sphinx
-- MkDocs
-- Docusaurus
-- GitHub Pages
-
-### Code Platforms
-- GitHub Gists
-- GitLab snippets
-- CodeSandbox
-- Repl.it
-- Local repositories
-
-## 📞 Support & Help
-
-### Getting Help
-- Run `/write-docs` - Start any documentation project
-- Run `/api-template` - Get structure for APIs
-- Run `/review-docs` - Get feedback on content
-- Run `/generate-examples` - Create code samples
-
-## 📄 License
-
-MIT License - Free for personal and commercial use
-
-## 🚀 Getting Started
-
-1. **Load the plugin** in Claude Code
-2. **Run `/write-docs`** to start your first project
-3. **Choose your documentation type**
-4. **Follow the provided structure**
-5. **Get help from `/review-docs` and `/generate-examples`**
-6. **Publish your professional documentation!**
-
-## Pro Tips
-
-- Start with `/write-docs` to get guided structure
-- Use `/api-template` for consistent API documentation
-- Leverage `/generate-examples` for code samples
-- Always use `/review-docs` before publishing
-- Keep documentation in version control
+<!-- Quick CTA Row -->
+[📦 **Install Now**](#-quick-start) · [🤖 **Explore Agents**](#-agents) · [📖 **Documentation**](#-documentation) · [⭐ **Star this repo**](https://github.com/pluginagentmarketplace/custom-plugin-technical-writer)
 
 ---
 
-**Create professional, clear technical documentation with AI assistance!** ✍️
+### What is this?
 
-Your exceptional documentation starts here! 🚀
+> **Technical Writer Assistant** is a Claude Code plugin with **1 agents** and **3 skills** for technical writer development.
+
+</div>
+
+---
+
+## 📑 Table of Contents
+
+<details>
+<summary>Click to expand</summary>
+
+- [Quick Start](#-quick-start)
+- [Features](#-features)
+- [Agents](#-agents)
+- [Skills](#-skills)
+- [Commands](#-commands)
+- [Documentation](#-documentation)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+</details>
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Claude Code CLI v2.0.27+
+- Active Claude subscription
+
+### Installation (Choose One)
+
+<details open>
+<summary><strong>Option 1: From Marketplace (Recommended)</strong></summary>
+
+```bash
+# Step 1️⃣ Add the marketplace
+/plugin add marketplace pluginagentmarketplace/custom-plugin-technical-writer
+
+# Step 2️⃣ Install the plugin
+/plugin install custom-plugin-technical-writer@pluginagentmarketplace-technical-writer
+
+# Step 3️⃣ Restart Claude Code
+# Close and reopen your terminal/IDE
+```
+
+</details>
+
+<details>
+<summary><strong>Option 2: Local Installation</strong></summary>
+
+```bash
+# Clone the repository
+git clone https://github.com/pluginagentmarketplace/custom-plugin-technical-writer.git
+cd custom-plugin-technical-writer
+
+# Load locally
+/plugin load .
+
+# Restart Claude Code
+```
+
+</details>
+
+### ✅ Verify Installation
+
+After restart, you should see these agents:
+
+```
+custom-plugin-technical-writer:technical-writer-specialist
+```
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 🤖 **1 Agents** | Specialized AI agents for technical writer tasks |
+| 🛠️ **3 Skills** | Reusable capabilities with Golden Format |
+| ⌨️ **4 Commands** | Quick slash commands |
+| 🔄 **SASMP v1.3.0** | Full protocol compliance |
+
+---
+
+## 🤖 Agents
+
+### 1 Specialized Agents
+
+| # | Agent | Purpose |
+|---|-------|---------|
+| 1 | **technical-writer-specialist** | Expert technical writer specializing in API documentation, u |
+
+---
+
+## 🛠️ Skills
+
+### Available Skills
+
+| Skill | Description | Invoke |
+|-------|-------------|--------|
+| `guides` | Create clear, comprehensive user guides and tutorials includ | `Skill("custom-plugin-technical-writer:guides")` |
+| `examples` | Generate clear, well-documented code examples, implementatio | `Skill("custom-plugin-technical-writer:examples")` |
+| `api-docs` | Master API documentation creation including OpenAPI/Swagger  | `Skill("custom-plugin-technical-writer:api-docs")` |
+
+---
+
+## ⌨️ Commands
+
+| Command | Description |
+|---------|-------------|
+| `/api-template` | template - OpenAPI/Swagger Template Generator |
+| `/review-docs` | docs - Documentation Review & Improvement |
+| `/generate-examples` | examples - Code Example Generator |
+| `/write-docs` | docs - Documentation Project Assistant |
+
+---
+
+## 📚 Documentation
+
+| Document | Description |
+|----------|-------------|
+| [CHANGELOG.md](CHANGELOG.md) | Version history |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
+| [LICENSE](LICENSE) | License information |
+
+---
+
+## 📁 Project Structure
+
+<details>
+<summary>Click to expand</summary>
+
+```
+custom-plugin-technical-writer/
+├── 📁 .claude-plugin/
+│   ├── plugin.json
+│   └── marketplace.json
+├── 📁 agents/              # 1 agents
+├── 📁 skills/              # 3 skills (Golden Format)
+├── 📁 commands/            # 4 commands
+├── 📁 hooks/
+├── 📄 README.md
+├── 📄 CHANGELOG.md
+└── 📄 LICENSE
+```
+
+</details>
+
+---
+
+## 📅 Metadata
+
+| Field | Value |
+|-------|-------|
+| **Version** | 1.0.0 |
+| **Last Updated** | 2025-12-29 |
+| **Status** | Production Ready |
+| **SASMP** | v1.3.0 |
+| **Agents** | 1 |
+| **Skills** | 3 |
+| **Commands** | 4 |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md).
+
+1. Fork the repository
+2. Create your feature branch
+3. Follow the Golden Format for new skills
+4. Submit a pull request
+
+---
+
+## ⚠️ Security
+
+> **Important:** This repository contains third-party code and dependencies.
+>
+> - ✅ Always review code before using in production
+> - ✅ Check dependencies for known vulnerabilities
+> - ✅ Follow security best practices
+> - ✅ Report security issues privately via [Issues](../../issues)
+
+---
+
+## 📝 License
+
+Copyright © 2025 **Dr. Umit Kacar** & **Muhsin Elcicek**
+
+Custom License - See [LICENSE](LICENSE) for details.
+
+---
+
+## 👥 Contributors
+
+<table>
+<tr>
+<td align="center">
+<strong>Dr. Umit Kacar</strong><br/>
+Senior AI Researcher & Engineer
+</td>
+<td align="center">
+<strong>Muhsin Elcicek</strong><br/>
+Senior Software Architect
+</td>
+</tr>
+</table>
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the Claude Code Community**
+
+[![GitHub](https://img.shields.io/badge/GitHub-pluginagentmarketplace-black?style=for-the-badge&logo=github)](https://github.com/pluginagentmarketplace)
+
+</div>

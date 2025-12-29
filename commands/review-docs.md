@@ -1,3 +1,9 @@
+---
+name: review-docs
+description: docs - Documentation Review & Improvement
+allowed-tools: Read
+---
+
 # /review-docs - Documentation Review & Improvement
 
 ## Purpose

@@ -1,0 +1,15 @@
+{
+  "name": "pluginagentmarketplace-technical-writer",
+  "owner": {
+    "name": "Plugin Agent Marketplace",
+    "email": "pluginagentmarketplace@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "custom-plugin-technical-writer",
+      "source": "./",
+      "description": "Claude Code plugin for technical writer development",
+      "version": "1.0.0"
+    }
+  ]
+}
