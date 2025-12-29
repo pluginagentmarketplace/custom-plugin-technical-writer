@@ -1,6 +1,9 @@
 ---
 name: user-guides
 description: Create clear, comprehensive user guides and tutorials including step-by-step instructions, feature explanations, troubleshooting guides, and FAQ sections. Use this skill for documenting user workflows and creating tutorials.
+sasmp_version: "1.3.0"
+bonded_agent: technical-writer-specialist
+bond_type: PRIMARY_BOND
 ---
 
 # User Guides & Tutorials Skill

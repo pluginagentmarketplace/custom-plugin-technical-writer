@@ -1,6 +1,9 @@
 ---
 name: code-examples
 description: Generate clear, well-documented code examples, implementation patterns, configuration files, and integration samples. Use this skill when creating code snippets, implementation guides, or showing how to use code.
+sasmp_version: "1.3.0"
+bonded_agent: technical-writer-specialist
+bond_type: PRIMARY_BOND
 ---
 
 # Code Examples Skill

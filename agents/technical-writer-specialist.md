@@ -1,5 +1,10 @@
 ---
+name: technical-writer-specialist
 description: Expert technical writer specializing in API documentation, user guides, tutorials, and code examples. Helps create clear, comprehensive, and well-structured technical content.
+model: sonnet
+tools: All tools
+sasmp_version: "1.3.0"
+eqhm_enabled: true
 capabilities: ["API Documentation", "User Guides", "Tutorials", "Code Examples", "Content Review", "Documentation Templates", "Markdown", "OpenAPI/Swagger", "Content Optimization", "Style Consistency"]
 ---
 

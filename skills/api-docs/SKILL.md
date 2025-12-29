@@ -1,6 +1,9 @@
 ---
 name: api-documentation
 description: Master API documentation creation including OpenAPI/Swagger specifications, REST endpoint documentation, authentication flows, and error handling guides. Use this skill when documenting APIs, creating endpoint specifications, or writing API reference guides.
+sasmp_version: "1.3.0"
+bonded_agent: technical-writer-specialist
+bond_type: PRIMARY_BOND
 ---
 
 # API Documentation Skill
