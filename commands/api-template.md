@@ -1,244 +1,152 @@
 ---
 name: api-template
-description: template - OpenAPI/Swagger Template Generator
+description: generate_api_template - Production-grade OpenAPI/Swagger template generator
 allowed-tools: Read
+version: "2.0.0"
+sasmp_version: "1.3.0"
+
+# Command Configuration
+command_config:
+  verb_noun: generate_api_template
+  aliases: [openapi, swagger, api-spec]
+  category: documentation
+
+# Input Validation
+input_validation:
+  required_args: []
+  optional_args:
+    - name: api-type
+      type: enum
+      values: [rest, graphql, websocket, grpc]
+    - name: template
+      type: enum
+      values: [simple, enterprise, microservices, public]
+    - name: auth
+      type: enum
+      values: [api-key, bearer, oauth2, basic, none]
+    - name: version
+      type: enum
+      values: ["3.0.0", "3.1.0"]
+
+# Exit Codes
+exit_codes:
+  0: success_valid_spec
+  1: validation_warnings
+  2: generation_error
+  3: invalid_input
 ---
 
-# /api-template - OpenAPI/Swagger Template Generator
+# /api-template - OpenAPI Template Generator v2.0
 
-## Purpose
-Generate ready-to-use OpenAPI/Swagger templates and specifications for documenting your APIs. Get professional, standards-based API documentation structure instantly.
+## Quick Reference
 
-## What This Command Provides
+```
+Usage: /api-template [--api-type TYPE] [--template TEMPLATE] [--auth AUTH]
 
-When you run `/api-template`, you'll get:
+Arguments:
+  --api-type   rest | graphql | websocket | grpc (default: rest)
+  --template   simple | enterprise | microservices | public
+  --auth       api-key | bearer | oauth2 | basic | none
+  --version    3.0.0 | 3.1.0 (default: 3.1.0)
 
-### 1. **Basic OpenAPI Specification**
+Examples:
+  /api-template
+  /api-template --template enterprise --auth oauth2
+  /api-template --api-type graphql
+```
+
+## Input Schema
+
+```typescript
+interface APITemplateInput {
+  api_type?: 'rest' | 'graphql' | 'websocket' | 'grpc';
+  template?: 'simple' | 'enterprise' | 'microservices' | 'public';
+  auth?: 'api-key' | 'bearer' | 'oauth2' | 'basic' | 'none';
+  version?: '3.0.0' | '3.1.0';
+
+  context?: {
+    api_name?: string;
+    api_version?: string;
+    base_url?: string;
+    description?: string;
+  };
+}
+```
+
+## Output Schema
+
+```typescript
+interface APITemplateOutput {
+  status: 'success' | 'warnings' | 'failed';
+  exit_code: 0 | 1 | 2 | 3;
+
+  content: {
+    specification: string;        // YAML OpenAPI spec
+    components: ComponentSet;     // Reusable components
+  };
+
+  validation: {
+    is_valid: boolean;
+    errors: ValidationError[];
+    warnings: ValidationWarning[];
+  };
+
+  metadata: {
+    openapi_version: string;
+    template_type: string;
+    auth_type: string;
+  };
+}
+```
+
+## Template Types
+
+| Template | Endpoints | Best For |
+|----------|-----------|----------|
+| `simple` | 3-5 | Small APIs, MVPs |
+| `enterprise` | 10+ | Large internal APIs |
+| `microservices` | Multi-spec | Service mesh |
+| `public` | Complete | External developer APIs |
+
+## Generated Specification Structure
+
 ```yaml
-openapi: 3.0.0
+# OpenAPI 3.1.0 Template
+openapi: 3.1.0
 info:
-  title: Your API Name
-  version: 1.0.0
-  description: |
-    Brief description of your API
+  title: ${api_name}
+  version: ${api_version}
+  description: ${description}
+  contact:
+    name: API Support
+    email: support@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
 
 servers:
-  - url: https://api.example.com/v1
+  - url: ${base_url}
     description: Production
+  - url: ${staging_url}
+    description: Staging
 
 paths:
-  /endpoint:
-    get:
-      summary: Endpoint summary
-      # ... rest of specification
-```
+  /resources:
+    get: # List
+    post: # Create
+  /resources/{id}:
+    get: # Read
+    put: # Update
+    delete: # Delete
 
-### 2. **Complete Endpoint Template**
-```yaml
-/resource/{id}:
-  get:
-    summary: Get a resource
-    tags:
-      - Resources
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-    responses:
-      '200':
-        description: Success
-      '404':
-        description: Not found
-```
-
-### 3. **Authentication Documentation**
-```yaml
 components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-```
+  schemas: # Data models
+  parameters: # Reusable params
+  responses: # Standard responses
+  securitySchemes: # Auth methods
 
-### 4. **Error Response Templates**
-```yaml
-responses:
-  '400':
-    description: Bad Request
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/Error'
-  '401':
-    description: Unauthorized
-  '404':
-    description: Not Found
-```
-
-### 5. **Schema Definitions**
-```yaml
-components:
-  schemas:
-    User:
-      type: object
-      required:
-        - id
-        - email
-      properties:
-        id:
-          type: string
-        email:
-          type: string
-```
-
-## How to Use
-
-### Step 1: Run the Command
-```
-/api-template
-```
-
-### Step 2: Choose API Type
-- **REST API** - Traditional HTTP REST
-- **GraphQL** - Query-based API
-- **Webhook** - Event-driven API
-- **WebSocket** - Real-time API
-
-### Step 3: Describe Your API
-Provide:
-- API name
-- Version
-- Main purpose
-- Authentication type
-- Key endpoints/resources
-
-### Step 4: Get Your Template
-Receive a complete, ready-to-edit OpenAPI specification
-
-### Step 5: Customize
-Fill in your specific endpoints, schemas, and details
-
-## Template Options
-
-### Option 1: Simple REST API
-**For:** Small to medium APIs with few endpoints
-
-**Includes:**
-- Basic OpenAPI structure
-- 3-5 endpoint examples
-- Simple authentication
-- Basic error handling
-
-**Uses:**
-- Swagger UI compatibility
-- ReDoc compatibility
-- API client generation
-
----
-
-### Option 2: Enterprise API
-**For:** Large, complex APIs with many endpoints
-
-**Includes:**
-- Full OpenAPI 3.0 specification
-- Multiple security schemes
-- Comprehensive error handling
-- Rate limiting documentation
-- Pagination examples
-- Filter/search parameters
-- Versioning strategy
-
----
-
-### Option 3: Microservices Collection
-**For:** Multiple related APIs
-
-**Includes:**
-- Individual specs for each service
-- Cross-service references
-- Shared schema definitions
-- Composite API documentation
-
----
-
-### Option 4: Public API
-**For:** APIs published for external developers
-
-**Includes:**
-- Clear getting started section
-- Comprehensive examples
-- Backward compatibility notes
-- Deprecation strategy
-- Sandbox/test environment
-- API key management
-
-## Common API Patterns
-
-### Pattern 1: CRUD Operations
-```yaml
-/items:
-  get: # List all
-    summary: List items
-  post: # Create
-    summary: Create item
-
-/items/{id}:
-  get: # Read
-    summary: Get item
-  put: # Update
-    summary: Update item
-  delete: # Delete
-    summary: Delete item
-```
-
-### Pattern 2: Nested Resources
-```yaml
-/users/{userId}/posts:
-  get: # List user's posts
-/users/{userId}/posts/{postId}:
-  get: # Get specific post
-```
-
-### Pattern 3: Filtering & Pagination
-```yaml
-/items:
-  get:
-    parameters:
-      - name: page
-        in: query
-        schema:
-          type: integer
-      - name: limit
-        in: query
-        schema:
-          type: integer
-      - name: filter
-        in: query
-        schema:
-          type: string
-```
-
-### Pattern 4: Async Operations
-```yaml
-/long-operations:
-  post:
-    responses:
-      '202':
-        description: Accepted
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                operation_id:
-                  type: string
-
-/long-operations/{operationId}:
-  get:
-    summary: Check operation status
+security:
+  - ${auth_scheme}: []
 ```
 
 ## Security Schemes
@@ -252,7 +160,7 @@ securitySchemes:
     name: X-API-Key
 ```
 
-### Bearer Token / JWT
+### Bearer Token (JWT)
 ```yaml
 securitySchemes:
   BearerAuth:
@@ -268,119 +176,162 @@ securitySchemes:
     type: oauth2
     flows:
       authorizationCode:
-        authorizationUrl: https://example.com/oauth/authorize
-        tokenUrl: https://example.com/oauth/token
+        authorizationUrl: /oauth/authorize
+        tokenUrl: /oauth/token
         scopes:
           read: Read access
           write: Write access
 ```
 
-## Error Response Structure
+## Standard Components
 
-### Recommended Error Format
+### Error Schema
 ```yaml
-components:
-  schemas:
-    Error:
+Error:
+  type: object
+  required: [code, message]
+  properties:
+    code:
+      type: string
+      example: INVALID_REQUEST
+    message:
+      type: string
+      example: Request validation failed
+    details:
       type: object
-      required:
-        - code
-        - message
-      properties:
-        code:
-          type: string
-          description: Error code (e.g., INVALID_REQUEST)
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: object
-          description: Additional error details
+    request_id:
+      type: string
 ```
 
-### Standard HTTP Status Codes
-| Code | When | Example |
-|------|------|---------|
-| 200 | Success | GET /users/123 |
-| 201 | Created | POST /users |
-| 400 | Bad request | Invalid parameters |
-| 401 | Unauthorized | Missing token |
-| 403 | Forbidden | Insufficient permissions |
-| 404 | Not found | Resource doesn't exist |
-| 409 | Conflict | Duplicate resource |
-| 429 | Rate limited | Too many requests |
-| 500 | Server error | Unexpected error |
+### Pagination Parameters
+```yaml
+PageParam:
+  name: page
+  in: query
+  schema:
+    type: integer
+    minimum: 1
+    default: 1
 
-## Tools That Work with Templates
+LimitParam:
+  name: limit
+  in: query
+  schema:
+    type: integer
+    minimum: 1
+    maximum: 100
+    default: 20
+```
 
-### Documentation Viewers
-- **Swagger UI** - Interactive API explorer
-- **ReDoc** - Beautiful API documentation
-- **Stoplight** - Visual API designer
+### Standard Responses
+```yaml
+responses:
+  BadRequest:
+    description: Invalid request
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Error'
+  Unauthorized:
+    description: Authentication required
+  NotFound:
+    description: Resource not found
+  RateLimited:
+    description: Too many requests
+    headers:
+      Retry-After:
+        schema:
+          type: integer
+```
 
-### Code Generation
-- **OpenAPI Generator** - Generate SDKs in 40+ languages
-- **Swagger Codegen** - Generate client libraries
+## HTTP Status Codes
 
-### Testing
-- **Postman** - API testing client
-- **Insomnia** - REST client
-- **Thunder Client** - VS Code extension
+| Code | When | Response |
+|------|------|----------|
+| 200 | Success (GET, PUT) | Resource |
+| 201 | Created (POST) | New resource |
+| 204 | Deleted (DELETE) | Empty |
+| 400 | Validation error | Error object |
+| 401 | Auth missing | Error + WWW-Authenticate |
+| 403 | Forbidden | Error object |
+| 404 | Not found | Error object |
+| 409 | Conflict | Error + existing resource |
+| 429 | Rate limited | Error + Retry-After |
+| 500 | Server error | Error object |
 
-### Development
-- **Prism** - Mock API server
-- **Spectacle** - Generate HTML docs
-- **OpenAPI 3.1 tools** - Latest standard tools
+## Validation Checks
 
-## Validation
+```yaml
+validation:
+  syntax:
+    - Valid YAML/JSON
+    - OpenAPI 3.x compliant
+  references:
+    - All $ref resolve
+    - No circular refs
+  completeness:
+    - All paths have responses
+    - All schemas have properties
+  security:
+    - Auth defined for protected paths
+    - No secrets in examples
+```
 
-### Check Your Specification
-- Valid YAML/JSON syntax
-- All references resolve
-- Required fields present
-- Examples match schemas
-- Consistent terminology
+## Error Handling
 
-### Tools to Validate
-- **Swagger Editor** - Online editor with validation
-- **Spectacle CLI** - Command-line validation
-- **openapi-generator** - Validation included
+| Exit Code | Condition | Action |
+|-----------|-----------|--------|
+| 0 | Valid spec | Ready to use |
+| 1 | Warnings | Review optional fixes |
+| 2 | Generation failed | Check input params |
+| 3 | Invalid input | Verify arguments |
 
-## Next Steps
+## Integration
 
-1. **Run `/api-template`**
-2. **Choose your API type** (REST, GraphQL, etc.)
-3. **Describe your API** (name, purpose, auth)
-4. **Get your template** (complete OpenAPI spec)
-5. **Customize** (add your specific endpoints)
-6. **Validate** (check for errors)
-7. **Generate docs** (use Swagger UI or ReDoc)
-8. **Publish** (share with your users)
+```yaml
+invokes_skills:
+  - api-documentation (primary)
 
-## Related Commands
+related_commands:
+  - /write-docs (full API docs)
+  - /generate-examples (endpoint examples)
+  - /review-docs (spec review)
 
-- **`/write-docs`** - Complete API documentation guide
-- **`/generate-examples`** - Create code examples for endpoints
-- **`/review-docs`** - Get feedback on API design
+tools_compatible:
+  - Swagger UI
+  - ReDoc
+  - Stoplight
+  - Postman
+  - OpenAPI Generator
+```
 
-## Tips
+## Best Practices
 
-✅ **DO:**
-- Start with your most important endpoints
-- Keep descriptions clear and concise
-- Include realistic examples
-- Document error scenarios
-- Keep spec in version control
-- Update spec with code changes
+**DO:**
+- Start with realistic examples
+- Document all error responses
+- Include rate limiting info
+- Version your spec with code
+- Validate before publishing
 
-❌ **DON'T:**
+**DON'T:**
 - Leave schemas undefined
-- Forget authentication documentation
-- Skip error responses
-- Include sensitive examples
-- Ignore schema validation
-- Neglect keeping spec updated
+- Skip authentication docs
+- Include real credentials
+- Ignore deprecation notices
+- Mix OpenAPI versions
+
+## Troubleshooting
+
+### Issue: Invalid $ref errors
+**Solution:** Check component paths
+
+### Issue: Missing security
+**Solution:** Specify `--auth` parameter
+
+### Issue: Complex nested schemas
+**Solution:** Break into reusable components
 
 ---
 
-**Your professional API documentation starts here!** 🚀
+**Version:** 2.0.0 | **OpenAPI:** 3.1.0 | **Validation:** Built-in

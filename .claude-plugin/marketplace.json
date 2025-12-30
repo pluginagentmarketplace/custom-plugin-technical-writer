@@ -8,8 +8,22 @@
     {
       "name": "custom-plugin-technical-writer",
       "source": "./",
-      "description": "Claude Code plugin for technical writer development",
-      "version": "1.0.0"
+      "description": "Production-grade Claude Code plugin for professional technical documentation with enterprise-level reliability, observability, and quality assurance.",
+      "version": "2.0.0",
+      "sasmp_version": "1.3.0",
+      "production_ready": true,
+      "features": {
+        "agents": 1,
+        "skills": 3,
+        "commands": 4,
+        "hooks": 10,
+        "languages_supported": 11
+      },
+      "quality_metrics": {
+        "test_coverage_target": "95%",
+        "quality_gate": 80,
+        "reliability_target": "99.5%"
+      }
     }
   ]
 }
