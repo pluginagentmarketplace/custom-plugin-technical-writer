@@ -1,432 +1,238 @@
 ---
 name: review-docs
-description: docs - Documentation Review & Improvement
+description: review_documentation - Production-grade documentation review and quality analysis
 allowed-tools: Read
+version: "2.0.0"
+sasmp_version: "1.3.0"
+
+# Command Configuration
+command_config:
+  verb_noun: review_documentation
+  aliases: [review, check-docs, analyze-docs]
+  category: documentation
+
+# Input Validation
+input_validation:
+  required_args: []
+  optional_args:
+    - name: focus
+      type: enum
+      values: [comprehensive, clarity, accuracy, structure, accessibility, seo]
+    - name: depth
+      type: enum
+      values: [quick, standard, deep]
+    - name: audience
+      type: enum
+      values: [beginner, intermediate, advanced, non-technical]
+
+# Exit Codes
+exit_codes:
+  0: pass_no_issues
+  1: pass_with_warnings
+  2: fail_critical_issues
+  3: error_invalid_input
 ---
 
-# /review-docs - Documentation Review & Improvement
+# /review-docs - Documentation Review v2.0
 
-## Purpose
-Get comprehensive feedback on your documentation. Improve clarity, identify gaps, ensure accuracy, and optimize for your target audience.
+## Quick Reference
 
-## What This Command Does
-
-Analyzes your documentation for:
-
-### 1. **Clarity & Readability**
-- ✅ Simple, clear language
-- ✅ Appropriate technical level
-- ✅ Consistent terminology
-- ✅ Well-organized structure
-- ✅ Logical flow
-
-### 2. **Completeness**
-- ✅ All major topics covered
-- ✅ Prerequisites documented
-- ✅ Examples included
-- ✅ Edge cases addressed
-- ✅ Troubleshooting provided
-
-### 3. **Technical Accuracy**
-- ✅ Correct information
-- ✅ Current versions referenced
-- ✅ Code examples work
-- ✅ Screenshots up-to-date
-- ✅ No deprecated features
-
-### 4. **Structure & Format**
-- ✅ Proper heading hierarchy
-- ✅ Good visual hierarchy
-- ✅ Consistent formatting
-- ✅ Easy navigation
-- ✅ Proper Markdown/HTML
-
-### 5. **Accessibility**
-- ✅ Descriptive headings
-- ✅ Alt text for images
-- ✅ Keyboard navigation
-- ✅ Sufficient contrast
-- ✅ Accessible tables
-
-### 6. **Best Practices**
-- ✅ Active voice preferred
-- ✅ Examples are realistic
-- ✅ Consistent style
-- ✅ Professional tone
-- ✅ SEO optimized
-
-## How to Use
-
-### Step 1: Prepare Your Documentation
-Have ready:
-- Your documentation file (Markdown, HTML, etc.)
-- Target audience description
-- Any specific concerns
-- Context about the product/API
-
-### Step 2: Run the Command
 ```
-/review-docs
+Usage: /review-docs [--focus AREA] [--depth LEVEL] [--audience TARGET]
+
+Arguments:
+  --focus      comprehensive | clarity | accuracy | structure | accessibility | seo
+  --depth      quick (5min) | standard (15min) | deep (30min)
+  --audience   beginner | intermediate | advanced | non-technical
+
+Examples:
+  /review-docs
+  /review-docs --focus clarity --depth deep
+  /review-docs --focus accessibility --audience beginner
 ```
 
-### Step 3: Provide Your Documentation
-Paste or upload:
-- The documentation text
-- Or: Share what you want reviewed
-- Or: Ask about specific sections
+## Input Schema
 
-### Step 4: Specify Your Focus
-Choose areas to emphasize:
-- **Comprehensive Review** - Full analysis
-- **Clarity Focus** - Readability and simplicity
-- **Accuracy Check** - Technical correctness
-- **Structure Review** - Organization and flow
-- **SEO Optimization** - Search visibility
-- **Accessibility Audit** - WCAG compliance
+```typescript
+interface ReviewDocsInput {
+  content: string;                    // Documentation to review
+  focus?: 'comprehensive' | 'clarity' | 'accuracy' | 'structure' | 'accessibility' | 'seo';
+  depth?: 'quick' | 'standard' | 'deep';
+  audience?: 'beginner' | 'intermediate' | 'advanced' | 'non-technical';
+  context?: {
+    product_name?: string;
+    doc_type?: string;
+    previous_issues?: string[];
+  };
+}
+```
 
-### Step 5: Get Detailed Feedback
-Receive:
-- Specific issues found
-- Suggestions for improvement
-- Examples of how to fix
-- Best practices references
-- Priority of improvements
+## Output Schema
+
+```typescript
+interface ReviewDocsOutput {
+  status: 'pass' | 'pass_with_warnings' | 'fail';
+  exit_code: 0 | 1 | 2 | 3;
+
+  scores: {
+    clarity: number;        // 0-100
+    completeness: number;   // 0-100
+    accuracy: number;       // 0-100
+    structure: number;      // 0-100
+    accessibility: number;  // 0-100
+    overall: number;        // 0-100
+  };
+
+  issues: Issue[];
+  suggestions: Suggestion[];
+
+  summary: {
+    critical_count: number;
+    warning_count: number;
+    info_count: number;
+  };
+}
+
+interface Issue {
+  severity: 'critical' | 'warning' | 'info';
+  category: string;
+  message: string;
+  location?: string;
+  suggested_fix?: string;
+}
+```
 
 ## Review Categories
 
-### Clarity Review
+| Focus Area | Checks | Priority |
+|------------|--------|----------|
+| `clarity` | Language, jargon, sentence length | High |
+| `completeness` | Missing sections, examples | High |
+| `accuracy` | Technical correctness, versions | Critical |
+| `structure` | Hierarchy, navigation, flow | Medium |
+| `accessibility` | Alt text, headings, contrast | Medium |
+| `seo` | Keywords, meta, links | Low |
 
-Checks:
-- Is language simple and direct?
-- Are technical terms defined?
-- Is jargon explained?
-- Are sentences concise?
-- Is tone consistent?
+## Depth Levels
 
-**Feedback includes:**
-- Sentences that are too complex
-- Unexplained technical terms
-- Inconsistent phrasing
-- Redundant text
-- Suggestions for simplification
+| Level | Time | Coverage |
+|-------|------|----------|
+| `quick` | 5 min | Major issues only |
+| `standard` | 15 min | Full analysis + suggestions |
+| `deep` | 30 min | Section-by-section + rewrites |
 
----
+## Quality Thresholds
 
-### Completeness Review
+```yaml
+thresholds:
+  pass: overall >= 80
+  pass_with_warnings: overall >= 60
+  fail: overall < 60
 
-Checks:
-- Are all major topics covered?
-- Are prerequisites clear?
-- Are there enough examples?
-- Is troubleshooting included?
-- Are edge cases addressed?
-
-**Feedback includes:**
-- Missing sections
-- Topics needing expansion
-- Insufficient examples
-- Gaps in instructions
-- Uncovered error scenarios
-
----
-
-### Accuracy Review
-
-Checks:
-- Is information correct?
-- Are versions current?
-- Do code examples work?
-- Are URLs valid?
-- Are screenshots recent?
-
-**Feedback includes:**
-- Incorrect information
-- Outdated versions
-- Non-functional examples
-- Broken links
-- Stale screenshots
-
----
-
-### Structure Review
-
-Checks:
-- Is organization logical?
-- Is hierarchy correct?
-- Is flow smooth?
-- Is navigation clear?
-- Is formatting consistent?
-
-**Feedback includes:**
-- Better organization suggestions
-- Heading hierarchy issues
-- Poor section transitions
-- Missing table of contents
-- Inconsistent formatting
-
----
-
-### Accessibility Review
-
-Checks:
-- Are headings descriptive?
-- Do images have alt text?
-- Is contrast sufficient?
-- Can it be used with keyboard?
-- Are tables accessible?
-
-**Feedback includes:**
-- Missing alt text
-- Vague headings
-- Color contrast issues
-- Keyboard navigation problems
-- Inaccessible table structures
-
----
-
-### SEO Review
-
-Checks:
-- Are keywords natural?
-- Is meta description good?
-- Are headings SEO-optimized?
-- Is content unique?
-- Are internal links present?
-
-**Feedback includes:**
-- SEO keyword suggestions
-- Meta description improvement
-- Heading optimization tips
-- Link suggestions
-- Content freshness
-
-## Review Levels
-
-### Quick Review (5 min)
-- Scan for major issues
-- Identify biggest problems
-- Quick suggestions
-
-**Best for:** Quick feedback, before major revision
-
----
-
-### Standard Review (15 min)
-- Comprehensive analysis
-- Detailed feedback
-- Prioritized suggestions
-- Examples of improvements
-
-**Best for:** Regular improvement, before publishing
-
----
-
-### Deep Review (30 min)
-- Section-by-section analysis
-- Detailed editing suggestions
-- Alternative wording options
-- Complete improvement plan
-- Rewrite examples
-
-**Best for:** Important documentation, final polish
-
----
-
-### Audience-Focused Review
-Customize review for:
-- **Beginners** - Check assumptions, explain terms
-- **Intermediate** - Check examples complexity
-- **Advanced** - Check depth, missing details
-- **Non-technical** - Check jargon, simplicity
-
-## Review Checklist
-
-### Before You Submit for Review
-
-- [ ] Content is complete
-- [ ] Grammar is checked
-- [ ] Links are tested
-- [ ] Code examples are verified
-- [ ] Screenshots are current
-- [ ] Formatting is consistent
-- [ ] Audience is clear
-- [ ] Purpose is clear
-
-### After You Get Feedback
-
-- [ ] Read all suggestions
-- [ ] Categorize by priority
-- [ ] Plan revisions
-- [ ] Make changes
-- [ ] Test code examples
-- [ ] Update screenshots if needed
-- [ ] Re-review if major changes
-- [ ] Publish with confidence
-
-## Common Issues Found
-
-### Top Issues Reviewers Find
-
-1. **Unclear Language**
-   - Technical jargon without explanation
-   - Complex sentences
-   - Passive voice
-   - Vague pronouns
-
-2. **Missing Information**
-   - No examples
-   - Incomplete instructions
-   - Missing prerequisites
-   - No error handling
-
-3. **Structural Problems**
-   - Illogical order
-   - Wrong heading levels
-   - Poor transitions
-   - Hard to navigate
-
-4. **Accuracy Problems**
-   - Outdated information
-   - Incorrect commands
-   - Wrong parameters
-   - Deprecated features
-
-5. **Formatting Issues**
-   - Inconsistent styling
-   - Missing alt text
-   - Broken links
-   - Poor code formatting
-
-## Improvement Process
-
-### Phase 1: Identify Issues
-- Get comprehensive review
-- Categorize by severity
-- Understand impact
-- Prioritize fixes
-
-### Phase 2: Plan Changes
-- Review suggestions
-- Outline improvements
-- Identify quick wins
-- Plan major revisions
-
-### Phase 3: Make Improvements
-- Address high-priority items
-- Improve clarity
-- Add missing content
-- Fix technical issues
-
-### Phase 4: Verify Changes
-- Test code examples
-- Check links
-- Update screenshots
-- Verify accuracy
-
-### Phase 5: Polish & Publish
-- Final readthrough
-- Format check
-- Accessibility check
-- Publish confidently
-
-## Examples of Good Improvements
-
-### Before (Unclear)
-"The system uses configuration files to manage operations."
-
-### After (Clear)
-"Create a config.yml file in your application directory to specify database connection, authentication settings, and logging preferences."
-
----
-
-### Before (Incomplete)
-"Install the package and start using it."
-
-### After (Complete)
-```bash
-# Install the package
-npm install mypackage
-
-# Create a configuration file
-cp config.example.yml config.yml
-
-# Edit config.yml with your settings
-nano config.yml
-
-# Start the application
-npm start
+scoring_weights:
+  clarity: 25%
+  completeness: 25%
+  accuracy: 20%
+  structure: 15%
+  accessibility: 15%
 ```
 
----
+## Issue Categories
 
-### Before (Outdated)
-"Use version 2.0 for best compatibility"
+### Critical (Must Fix)
+- Incorrect technical information
+- Non-functional code examples
+- Security vulnerabilities in examples
+- Broken links to critical resources
 
-### After (Current)
-"Use version 4.0 (released Jan 2024) for latest features. Version 3.x receives security updates until Dec 2024."
+### Warning (Should Fix)
+- Complex sentences (> 25 words)
+- Missing examples for key features
+- Inconsistent terminology
+- Missing alt text for images
+
+### Info (Consider)
+- Style guide deviations
+- SEO improvements
+- Minor formatting issues
+- Enhancement suggestions
+
+## Output Format
+
+```yaml
+# Review Summary
+status: pass_with_warnings
+exit_code: 1
+overall_score: 78/100
+
+# Score Breakdown
+scores:
+  clarity: 85
+  completeness: 72
+  accuracy: 90
+  structure: 75
+  accessibility: 68
+
+# Issues Found
+issues:
+  critical: 0
+  warnings: 5
+  info: 12
+
+# Top 3 Priorities
+priorities:
+  1: "Add examples to Authentication section"
+  2: "Simplify paragraph in 'Advanced Usage'"
+  3: "Add alt text to 3 images"
+```
+
+## Error Handling
+
+| Exit Code | Meaning | Action |
+|-----------|---------|--------|
+| 0 | Pass, no issues | Ready to publish |
+| 1 | Pass with warnings | Review suggestions |
+| 2 | Fail, critical issues | Must fix before publish |
+| 3 | Invalid input | Check documentation format |
+
+## Integration
+
+```yaml
+invokes_skills:
+  - user-guides (for readability analysis)
+  - api-documentation (for spec validation)
+
+related_commands:
+  - /write-docs (create content)
+  - /generate-examples (fix code gaps)
+  - /api-template (validate specs)
+```
 
 ## Best Practices
 
-✅ **DO:**
-- Be specific with feedback
-- Provide examples
-- Suggest improvements
-- Consider audience
-- Offer alternatives
-- Explain reasoning
+**Before Review:**
+- Complete all major sections
+- Test code examples
+- Check links manually
+- Define target audience
 
-❌ **DON'T:**
-- Be vague
-- Just say "fix this"
-- Be harsh or dismissive
-- Ignore context
-- Suggest conflicting things
-- Overwhelm with too many changes
+**After Review:**
+- Address critical issues first
+- Group similar fixes
+- Re-review after major changes
+- Document decisions made
 
-## Related Commands
+## Troubleshooting
 
-- **`/write-docs`** - Create new documentation
-- **`/api-template`** - Get API doc templates
-- **`/generate-examples`** - Create code examples
+### Issue: Score unexpectedly low
+**Check:** Audience mismatch, missing examples
 
-## Pro Tips
+### Issue: Many false positives
+**Solution:** Specify correct `--audience` level
 
-**Tip 1: Review Before Publishing**
-Always get a fresh review before publishing. You become blind to your own mistakes.
-
-**Tip 2: Share with Target Users**
-Have actual users review if possible. They'll spot things experts miss.
-
-**Tip 3: Review in Stages**
-First: Structure and completeness
-Second: Clarity and accuracy
-Third: Polish and formatting
-
-**Tip 4: Keep Improving**
-Even published docs can improve. Update based on user feedback.
-
-**Tip 5: Version Your Docs**
-Keep track of changes. Revert if needed. Use version control.
-
-## Review Turnaround
-
-- **Quick Review**: 5 minutes
-- **Standard Review**: 15-20 minutes
-- **Deep Review**: 30-45 minutes
-- **Audience-Focused**: 20-30 minutes
-
-## Success Metrics
-
-After review and improvements, your docs should:
-- ✅ Be understandable by target audience
-- ✅ Include all necessary information
-- ✅ Have working code examples
-- ✅ Be easy to navigate
-- ✅ Be professionally formatted
-- ✅ Be current and accurate
-- ✅ Be optimized for search
-- ✅ Be accessible to all users
+### Issue: Review times out
+**Solution:** Split into smaller sections
 
 ---
 
-**Ready to improve your documentation? Run `/review-docs` now!** 📝✨
+**Version:** 2.0.0 | **Exit Codes:** 0-3 | **Quality Gate:** 80+

@@ -1,9 +1,11 @@
 {
   "name": "custom-plugin-technical-writer",
-  "version": "1.0.0",
-  "description": "Professional Technical Writer plugin with AI-powered documentation assistance, API documentation templates, and content optimization tools",
+  "version": "2.0.0",
+  "description": "Production-grade Technical Writer plugin with AI-powered documentation assistance, comprehensive API documentation templates, and enterprise-level content optimization tools. SASMP v1.3.0 compliant.",
   "author": "Claude Code Plugin Marketplace",
   "license": "SEE LICENSE IN LICENSE",
+  "sasmp_version": "1.3.0",
+  "eqhm_enabled": true,
   "keywords": [
     "technical-writing",
     "documentation",
@@ -13,7 +15,9 @@
     "content-creation",
     "markdown",
     "swagger",
-    "openapi"
+    "openapi",
+    "production-grade",
+    "enterprise"
   ],
   "repository": "https://github.com/pluginagentmarketplace/custom-plugin-technical-writer",
   "agents": [
@@ -33,6 +37,23 @@
   "hooks": {
     "config": "hooks/hooks.json"
   },
+  "production_config": {
+    "observability": {
+      "logging_level": "info",
+      "trace_enabled": true,
+      "metrics_collection": true
+    },
+    "error_handling": {
+      "retry_attempts": 3,
+      "backoff_strategy": "exponential",
+      "fallback_enabled": true
+    },
+    "quality_gates": {
+      "min_quality_score": 80,
+      "required_sections": ["troubleshooting", "examples"],
+      "validation_required": true
+    }
+  },
   "marketplaceMetadata": {
     "category": "Documentation & Content",
     "tier": "professional",
@@ -40,7 +61,8 @@
       "technical-writer",
       "documentation-engineer",
       "developer-advocate",
-      "content-creator"
+      "content-creator",
+      "api-developer"
     ],
     "documentationTypes": [
       "API Documentation",
@@ -48,15 +70,48 @@
       "Tutorials",
       "Code Examples",
       "Release Notes",
-      "Architecture Guides"
+      "Architecture Guides",
+      "OpenAPI Specifications",
+      "Troubleshooting Guides"
     ],
     "toolsSupported": [
       "Markdown",
-      "OpenAPI/Swagger",
+      "OpenAPI/Swagger 3.1",
       "AsyncAPI",
       "ReStructuredText",
-      "HTML/CSS"
+      "HTML/CSS",
+      "YAML",
+      "TypeScript Schemas"
     ],
-    "difficulty": "beginner-to-advanced"
+    "difficulty": "beginner-to-advanced",
+    "features": [
+      "Production-grade error handling",
+      "Input/Output schema validation",
+      "Multi-language code examples (11 languages)",
+      "Retry logic with exponential backoff",
+      "Observability hooks",
+      "Quality metrics and scoring",
+      "Troubleshooting decision trees",
+      "Comprehensive unit test templates"
+    ]
+  },
+  "changelog": {
+    "2.0.0": {
+      "date": "2025-01-15",
+      "changes": [
+        "Production-grade upgrade for all agents and skills",
+        "Added I/O schemas with TypeScript interfaces",
+        "Implemented error handling with retry logic",
+        "Added observability hooks for logging and metrics",
+        "Created troubleshooting guides with decision trees",
+        "Added unit test templates for all skills",
+        "Standardized exit codes for all commands",
+        "Enhanced code examples with 11 language support"
+      ]
+    },
+    "1.0.0": {
+      "date": "2024-11-18",
+      "changes": ["Initial release"]
+    }
   }
 }
