@@ -21,18 +21,18 @@
   ],
   "repository": "https://github.com/pluginagentmarketplace/custom-plugin-technical-writer",
   "agents": [
-    "technical-writer-specialist"
+    "./agents/technical-writer-specialist.md"
   ],
   "commands": [
-    "write-docs",
-    "api-template",
-    "review-docs",
-    "generate-examples"
+    "./commands/write-docs.md",
+    "./commands/api-template.md",
+    "./commands/review-docs.md",
+    "./commands/generate-examples.md"
   ],
   "skills": [
-    "api-documentation",
-    "user-guides",
-    "code-examples"
+    "./skills/api-docs/SKILL.md",
+    "./skills/guides/SKILL.md",
+    "./skills/examples/SKILL.md"
   ],
   "hooks": {
     "config": "hooks/hooks.json"

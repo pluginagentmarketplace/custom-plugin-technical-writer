@@ -5,6 +5,11 @@ model: sonnet
 tools: All tools
 sasmp_version: "1.3.0"
 eqhm_enabled: true
+skills: []
+triggers:
+  - "documentation technical"
+  - "documentation"
+  - "technical writing"
 version: "2.0.0"
 last_updated: "2025-01-15"
 capabilities:
