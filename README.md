@@ -63,7 +63,7 @@
 
 ```bash
 # Step 1️⃣ Add the marketplace
-/plugin add marketplace pluginagentmarketplace/custom-plugin-technical-writer
+/plugin marketplace add pluginagentmarketplace/custom-plugin-technical-writer
 
 # Step 2️⃣ Install the plugin
 /plugin install custom-plugin-technical-writer@pluginagentmarketplace-technical-writer

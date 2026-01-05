@@ -34,9 +34,6 @@
     "./skills/guides/SKILL.md",
     "./skills/examples/SKILL.md"
   ],
-  "hooks": {
-    "config": "hooks/hooks.json"
-  },
   "production_config": {
     "observability": {
       "logging_level": "info",
@@ -50,7 +47,10 @@
     },
     "quality_gates": {
       "min_quality_score": 80,
-      "required_sections": ["troubleshooting", "examples"],
+      "required_sections": [
+        "troubleshooting",
+        "examples"
+      ],
       "validation_required": true
     }
   },
@@ -111,7 +111,9 @@
     },
     "1.0.0": {
       "date": "2024-11-18",
-      "changes": ["Initial release"]
+      "changes": [
+        "Initial release"
+      ]
     }
   }
 }
